@@ -316,15 +316,17 @@ export default class StepZilla extends Component {
 
           {compToRender}
         <div style={this.props.showNavigation ? {} : this.hidden} className="footer-buttons">
-          <button
-            type="button"
-            style={showPreviousBtn ? {} : this.hidden}
-            className={props.backButtonCls}
-            onClick={() => { this.previous(); }}
-            id="prev-button"
-          >
-            {this.props.backButtonText}
-          </button>
+          {props.showBackButton && (
+            <button
+              type="button"
+              style={showPreviousBtn ? {} : this.hidden}
+              className={props.backButtonCls}
+              onClick={() => { this.previous(); }}
+              id="prev-button"
+            >
+              {this.props.backButtonText}
+            </button>
+          )}
           <button
             type="button"
             style={showNextBtn ? {} : this.hidden}
@@ -333,6 +335,15 @@ export default class StepZilla extends Component {
             id="next-button"
           >
             {nextStepText}
+          </button>
+          <button
+            type="button"
+            style={showNextBtn ? {} : this.hidden}
+            className={props.skipButtonCls}
+            onClick={() => { this.next(); }}
+            id="next-button"
+          >
+            {this.props.skipButtonText}
           </button>
         </div>
       </div>
@@ -348,10 +359,13 @@ StepZilla.defaultProps = {
   dontValidate: false,
   preventEnterSubmission: false,
   startAtStep: 0,
+  showBackButton: true,
   nextButtonText: 'Next',
   nextButtonCls: 'btn btn-prev btn-primary btn-lg pull-right',
   backButtonText: 'Previous',
   backButtonCls: 'btn btn-next btn-primary btn-lg pull-left',
+  skipButtonText: 'Skip',
+  skipButtonCls: 'btn btn-prev btn-link btn-lg pull-right',
   hocValidationAppliedTo: []
 };
 

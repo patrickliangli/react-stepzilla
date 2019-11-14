@@ -391,7 +391,7 @@ function (_Component) {
       }, this.renderSteps()) : _react.default.createElement("span", null), compToRender, _react.default.createElement("div", {
         style: this.props.showNavigation ? {} : this.hidden,
         className: "footer-buttons"
-      }, _react.default.createElement("button", {
+      }, props.showBackButton && _react.default.createElement("button", {
         type: "button",
         style: showPreviousBtn ? {} : this.hidden,
         className: props.backButtonCls,
@@ -407,7 +407,15 @@ function (_Component) {
           _this6.next();
         },
         id: "next-button"
-      }, nextStepText)));
+      }, nextStepText), _react.default.createElement("button", {
+        type: "button",
+        style: showNextBtn ? {} : this.hidden,
+        className: props.skipButtonCls,
+        onClick: function onClick() {
+          _this6.next();
+        },
+        id: "next-button"
+      }, this.props.skipButtonText)));
     }
   }]);
 
@@ -423,10 +431,13 @@ StepZilla.defaultProps = {
   dontValidate: false,
   preventEnterSubmission: false,
   startAtStep: 0,
+  showBackButton: true,
   nextButtonText: 'Next',
   nextButtonCls: 'btn btn-prev btn-primary btn-lg pull-right',
   backButtonText: 'Previous',
   backButtonCls: 'btn btn-next btn-primary btn-lg pull-left',
+  skipButtonText: 'Skip',
+  skipButtonCls: 'btn btn-prev btn-link btn-lg pull-right',
   hocValidationAppliedTo: []
 };
 StepZilla.propTypes = {
