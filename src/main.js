@@ -339,6 +339,7 @@ export default class StepZilla extends Component {
           {this.state.compState > 0 && (
             <button
               type="button"
+              style={showNextBtn ? {} : this.hidden}
               className={props.skipButtonCls}
               onClick={() => { this.next(); }}
               id="next-button"
