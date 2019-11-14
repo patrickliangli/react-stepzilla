@@ -407,9 +407,8 @@ function (_Component) {
           _this6.next();
         },
         id: "next-button"
-      }, nextStepText), _react.default.createElement("button", {
+      }, nextStepText), this.state.compState > 0 && _react.default.createElement("button", {
         type: "button",
-        style: showNextBtn ? {} : this.hidden,
         className: props.skipButtonCls,
         onClick: function onClick() {
           _this6.next();
